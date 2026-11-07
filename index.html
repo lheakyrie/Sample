@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d141c">
+  <title>PinoyProto 3D Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-page="dashboard">
+        <span class="brand-name">PINOYPROTO 3D</span>
+        <span class="brand-subtitle">Production tools</span>
+      </a>
+
+      <nav class="nav">
+        <div class="nav-group">
+          <p class="nav-label">STATISTICS</p>
+          <button class="nav-link active" data-page="dashboard"><span class="nav-icon">▦</span>Dashboard</button>
+          <button class="nav-link" data-page="customers"><span class="nav-icon">♙</span>Customer Tracker</button>
+        </div>
+        <div class="nav-group">
+          <p class="nav-label">TOOLS</p>
+          <button class="nav-link" data-page="feedback"><span class="nav-icon">✧</span>Customer Feedback Renderer</button>
+          <button class="nav-link" data-page="quotation"><span class="nav-icon">₱</span>Quotation Maker</button>
+        </div>
+      </nav>
+
+      <button class="nav-link saved-link" data-page="saved"><span class="nav-icon">▤</span>Saved Quotations <span class="saved-count" id="savedCount">0</span></button>
+      <div class="sidebar-footer"><span class="status-dot"></span> Local workspace <span class="version">v1.0</span></div>
+    </aside>
+
+    <main class="main">
+      <header class="mobile-header">
+        <button class="icon-button" id="menuToggle" aria-label="Open menu">☰</button>
+        <span class="brand-name">PINOYPROTO 3D</span>
+      </header>
+
+      <div class="content-wrap">
+        <section class="page active" id="page-dashboard">
+          <div class="hero">
+            <div class="eyebrow">PINOYPROTO 3D WORKSPACE</div>
+            <h1>Make every deliverable<br class="desktop-break"> look professional.</h1>
+            <p class="hero-copy">Fast, focused tools for turning your work into polished customer posts and clear quotations.</p>
+          </div>
+
+          <div class="tool-grid">
+            <button class="tool-card featured" data-page="feedback">
+              <span class="tool-icon">↗</span>
+              <span class="tool-title">Customer Feedback Renderer</span>
+              <span class="tool-description">Combine feedback and product photos into a ready-to-post square image.</span>
+              <span class="tool-action">Open renderer <b>→</b></span>
+              <span class="card-orb"></span>
+            </button>
+            <button class="tool-card" data-page="quotation">
+              <span class="tool-icon">⚑</span>
+              <span class="tool-title">Quotation Maker</span>
+              <span class="tool-description">Create an A4 quotation with items, terms, payment details, and attached renders.</span>
+              <span class="tool-action">Open quotation maker <b>→</b></span>
+              <span class="card-orb"></span>
+            </button>
+            <button class="tool-card" data-page="customers">
+              <span class="tool-icon">♙</span>
+              <span class="tool-title">Customer Tracker</span>
+              <span class="tool-description">Keep customer details and order progress organized in one place.</span>
+              <span class="tool-action">Open customer tracker <b>→</b></span>
+              <span class="card-orb"></span>
+            </button>
+            <button class="tool-card" data-page="saved">
+              <span class="tool-icon">▤</span>
+              <span class="tool-title">Saved Quotations</span>
+              <span class="tool-description">Review, print, and manage quotations you have saved in this browser.</span>
+              <span class="tool-action">View saved quotations <b>→</b></span>
+              <span class="card-orb"></span>
+            </button>
+          </div>
+
+          <div class="dashboard-bottom">
+            <div class="section-heading"><div><div class="eyebrow">WORKSPACE OVERVIEW</div><h2>Your activity at a glance</h2></div></div>
+            <div class="stats-grid">
+              <div class="stat-card"><span class="stat-label">CUSTOMERS</span><strong id="customerStat">0</strong><span class="stat-note">Saved customer records</span></div>
+              <div class="stat-card"><span class="stat-label">QUOTATIONS</span><strong id="quotationStat">0</strong><span class="stat-note">Saved quotations</span></div>
+              <div class="stat-card"><span class="stat-label">TOTAL QUOTED</span><strong id="totalStat">₱0.00</strong><span class="stat-note">Based on saved quotations</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-customers">
+          <div class="page-heading"><div><div class="eyebrow">CUSTOMER MANAGEMENT</div><h1>Customer Tracker</h1><p>Organize customer information and keep track of each order.</p></div><button class="primary-button" id="addCustomerBtn">＋ Add customer</button></div>
+          <div class="panel">
+            <div class="panel-toolbar"><div><h2>Customer records</h2><p class="muted">Your records are saved in this browser.</p></div><input class="search-input" id="customerSearch" placeholder="Search customers..."></div>
+            <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Contact</th><th>Project / Order</th><th>Status</th><th>Actions</th></tr></thead><tbody id="customerRows"><tr><td colspan="5" class="empty">No customers yet. Add your first customer to get started.</td></tr></tbody></table></div>
+          </div>
+          <p class="privacy-note">Note: This starter version stores data locally in your current browser. It does not sync between devices.</p>
+        </section>
+
+        <section class="page" id="page-feedback">
+          <div class="page-heading"><div><div class="eyebrow">SOCIAL MEDIA TOOL</div><h1>Customer Feedback Renderer</h1><p>Create a square customer feedback post for your social media page.</p></div></div>
+          <div class="editor-layout">
+            <div class="panel form-panel">
+              <h2>Post details</h2>
+              <label>Customer name <input id="feedbackName" placeholder="e.g. Maria S."></label>
+              <label>Customer feedback <textarea id="feedbackText" rows="5" placeholder="Enter the customer's feedback here..."></textarea></label>
+              <label>Product / order description <input id="feedbackProduct" placeholder="e.g. Customized 3D printed keychain"></label>
+              <label>Product photo <input type="file" id="feedbackImage" accept="image/*"></label>
+              <div class="button-row"><button class="primary-button" id="renderFeedback">Update preview</button><button class="secondary-button" id="downloadFeedback">Download PNG</button></div>
+              <p class="hint">Only upload photos and feedback that you have permission to share.</p>
+            </div>
+            <div class="preview-panel"><div class="preview-label">LIVE PREVIEW · 1080 × 1080</div><canvas id="feedbackCanvas" width="1080" height="1080"></canvas></div>
+          </div>
+        </section>
+
+        <section class="page" id="page-quotation">
+          <div class="page-heading"><div><div class="eyebrow">DOCUMENT GENERATOR</div><h1>Quotation Maker</h1><p>Prepare a clear quotation for your 3D printing and modeling projects.</p></div><button class="secondary-button" id="printQuoteTop">Print / Save PDF</button></div>
+          <div class="quote-layout">
+            <div class="panel form-panel">
+              <h2>Quotation details</h2>
+              <div class="two-fields"><label>Quotation no.<input id="quoteNumber"></label><label>Date<input id="quoteDate" type="date"></label></div>
+              <label>Customer name<input id="quoteCustomer" placeholder="Customer name"></label>
+              <label>Contact details<input id="quoteContact" placeholder="Email or mobile number"></label>
+              <label>Project title<input id="quoteProject" placeholder="Project / item name"></label>
+              <div class="divider-line"></div>
+              <div class="panel-subheading"><h3>Quotation items</h3><button class="text-button" id="addItem">＋ Add item</button></div>
+              <div id="quoteItems"></div>
+              <div class="two-fields"><label>Material rate (₱ / gram)<input id="materialRate" type="number" min="0" step="0.01" value="3"></label><label>Print rate (₱ / hour)<input id="timeRate" type="number" min="0" step="0.01" value="55"></label></div>
+              <label>Additional charges (₱)<input id="extraCharges" type="number" min="0" step="0.01" value="0"></label>
+              <label>Terms and notes<textarea id="quoteTerms" rows="5">• 50% down payment to confirm the order.
+• Remaining balance must be settled before delivery.
+• Final price may change if project specifications are revised.
+• Production starts after confirmation and down payment.</textarea></label>
+              <label>Payment details<textarea id="paymentDetails" rows="2" placeholder="Bank / e-wallet details"></textarea></label>
+              <div class="button-row"><button class="primary-button" id="saveQuote">Save quotation</button><button class="secondary-button" id="printQuote">Print / Save PDF</button></div>
+              <p class="hint">To create a PDF, choose “Save as PDF” in your browser's print destination.</p>
+            </div>
+            <div class="quote-preview-wrap">
+              <div class="preview-label">QUOTATION PREVIEW</div>
+              <article class="quote-paper" id="quotePaper">
+                <div class="quote-paper-head"><div><div class="paper-brand">PINOYPROTO 3D</div><div class="paper-tagline">3D Printing · 3D Modeling · Custom Projects</div></div><div class="paper-doc">QUOTATION</div></div>
+                <div class="paper-meta"><div><span>QUOTATION NO.</span><b id="pNumber">PP-0001</b></div><div><span>DATE</span><b id="pDate">—</b></div></div>
+                <div class="paper-customer"><div><span>PREPARED FOR</span><b id="pCustomer">Customer name</b><small id="pContact">Contact details</small></div><div><span>PROJECT</span><b id="pProject">Project title</b></div></div>
+                <table class="paper-table"><thead><tr><th>DESCRIPTION</th><th>QTY</th><th>AMOUNT</th></tr></thead><tbody id="paperItems"><tr><td>3D printing / modeling service</td><td>1</td><td>₱0.00</td></tr></tbody></table>
+                <div class="paper-total"><div><span>Additional charges</span><b id="pExtra">₱0.00</b></div><div class="grand-total"><span>TOTAL</span><b id="pTotal">₱0.00</b></div><div><span>50% down payment</span><b id="pDown">₱0.00</b></div></div>
+                <div class="paper-notes"><b>TERMS &amp; NOTES</b><p id="pTerms"></p><b>PAYMENT DETAILS</b><p id="pPayment">To be provided.</p></div>
+                <div class="paper-footer">Thank you for considering PINOYPROTO 3D!</div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-saved">
+          <div class="page-heading"><div><div class="eyebrow">DOCUMENT ARCHIVE</div><h1>Saved Quotations</h1><p>Access quotations saved in this browser.</p></div><button class="primary-button" data-page="quotation">＋ New quotation</button></div>
+          <div class="panel"><div class="panel-toolbar"><div><h2>Quotation history</h2><p class="muted">Select a quotation to load or print it.</p></div><input class="search-input" id="quoteSearch" placeholder="Search quotations..."></div><div class="table-wrap"><table><thead><tr><th>Quotation no.</th><th>Customer</th><th>Project</th><th>Date</th><th>Total</th><th>Actions</th></tr></thead><tbody id="savedRows"><tr><td colspan="6" class="empty">No saved quotations yet.</td></tr></tbody></table></div></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="customerDialog" class="modal">
+    <form method="dialog" id="customerForm">
+      <div class="modal-head"><div><div class="eyebrow">CUSTOMER RECORD</div><h2 id="customerDialogTitle">Add customer</h2></div><button class="icon-button close-dialog" aria-label="Close">×</button></div>
+      <input type="hidden" id="customerId">
+      <label>Customer name<input id="customerName" required placeholder="Full name"></label>
+      <label>Contact details<input id="customerPhone" placeholder="Mobile number / email"></label>
+      <label>Project / order<input id="customerOrder" placeholder="What did they order?"></label>
+      <label>Order status<select id="customerStatus"><option>Inquiry</option><option>For quotation</option><option>Awaiting down payment</option><option>In production</option><option>For delivery</option><option>Completed</option><option>Cancelled</option></select></label>
+      <div class="button-row"><button type="button" class="secondary-button" id="cancelCustomer">Cancel</button><button type="submit" class="primary-button">Save customer</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
